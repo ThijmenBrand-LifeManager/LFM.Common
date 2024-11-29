@@ -1,0 +1,30 @@
+name: Build and release packages
+
+env:
+  GITHUB_NAMESPACE: ThijmenBrand-LifeManager
+  GITHUB_USERNAME: ThijmenBrand
+  BUILD_CONFIGURATION: Release
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - develop
+      - release
+  push:
+    branches:
+      - develop
+      - release
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    name: Publish packages
+    uses: ThijmenBrand-LifeManager/LFM.Pipelines/.github/workflows/publish-package.yml@main
+    with:
+      package-path: |-
+        LFM.Common/LFM.Azure.Common/LFM.Azure.Common.csproj
+      direct-call: true
+      solution-file: LFM.Common/LFM.Common.sln
+    secrets: inherit
