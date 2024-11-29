@@ -29,7 +29,7 @@ public static class AzureCredentialFactory
         }
         else
         {
-            Console.WriteLine(BaseMessage + "Managed Identity Client Id not provided.");
+            Console.WriteLine(BaseMessage + "Managed Identity Client Identifier not provided.");
         }
 
         var credential = new DefaultAzureCredential(defaultAzureCredentialOptions);
